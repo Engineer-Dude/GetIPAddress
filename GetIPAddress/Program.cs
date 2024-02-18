@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+// Add these two lines for dependency injection
+builder.Services.AddScoped<BlazorAppContext>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

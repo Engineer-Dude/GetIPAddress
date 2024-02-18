@@ -1,4 +1,12 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@* Add this block to get the IP Address from the context *@
+@inject IHttpContextAccessor httpContextAccessor
+@inject BlazorAppContext blazorAppContext
+@{
+    var remoteIpAddress = httpContextAccessor?.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "";
+    blazorAppContext.CurrentUserIP = remoteIpAddress;
+}
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />

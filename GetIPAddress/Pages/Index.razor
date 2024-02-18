@@ -1,3 +1,9 @@
 ﻿@page "/"
 
+@* Add this line to get access to the class holding the CurrentUserIP property *@
+@inject BlazorAppContext blazorAppContext
+
 <h1>Hello, world!</h1>
+
+@* Use the CurrentUserIP property *@
+<p>The IP Address is @blazorAppContext.CurrentUserIP</p>
